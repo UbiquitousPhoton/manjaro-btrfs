@@ -49,14 +49,14 @@ yes | LC_ALL=en_US.UTF-8 sudo pacman -R timeshift-autosnap-manjaro timeshift
 
 #install default stuff
 yes | LC_ALL=en_US.UTF-8 sudo pacman -S --needed --noconfirm base-devel
-yes | LC_ALL=en_US.UTF-8 sudo pacman -S --needed --overwrite /etc/skel/.config/autostart binutils mc mtools unarj activity-log-manager at baobab exempi caja caja-extensions-common caja-share caja-sendto caja-wallpaper caja-open-terminal caja-xattr-tags caja-image-converter  catdoc copyq doublecmd-gtk2 libunrar dstat gnome-disk-utility gnome-system-monitor hddtemp iotop keepassxc lshw meld gnome-nettool seahorse smplayer smtube strace youtube-dl zeitgeist-explorer yay synapse fd manjaro-tools-base lbzip2 compsize filemanager-actions pigz gnome-calculator system-config-printer downgrade bash-completion iftop net-tools hunspell-en_us
+#yes | LC_ALL=en_US.UTF-8 sudo pacman -S --needed --overwrite /etc/skel/.config/autostart binutils mc mtools unarj activity-log-manager at baobab exempi caja caja-extensions-common caja-share caja-sendto caja-wallpaper caja-open-terminal caja-xattr-tags caja-image-converter  catdoc copyq doublecmd-gtk2 libunrar dstat gnome-disk-utility gnome-system-monitor hddtemp iotop keepassxc lshw meld gnome-nettool seahorse smplayer smtube strace youtube-dl zeitgeist-explorer yay synapse fd manjaro-tools-base lbzip2 compsize filemanager-actions pigz gnome-calculator system-config-printer downgrade bash-completion iftop net-tools hunspell-en_us
 
 # synapse vs ulauncher?
 
 # change login greeter
-yes | LC_ALL=en_US.UTF-8 sudo sudo pacman -S --needed lightdm-settings lightdm-slick-greeter
+#yes | LC_ALL=en_US.UTF-8 sudo sudo pacman -S --needed lightdm-settings lightdm-slick-greeter
 
-sudo sed -i 's/greeter-session=lightdm-gtk-greeter/greeter-session=lightdm-slick-greeter/' /etc/lightdm/lightdm.conf
+#sudo sed -i 's/greeter-session=lightdm-gtk-greeter/greeter-session=lightdm-slick-greeter/' /etc/lightdm/lightdm.conf
 
 
 # set up bootsplash
@@ -79,13 +79,12 @@ if [ $(uname -m) = "x86_64" ]; then
     fi
 fi
 
-
-# multi thread compress
-cd /usr/local/bin
-sudo ln -s /usr/bin/lbzip2 bzip2
-sudo ln -s /usr/bin/lbzip2 bunzip2
-sudo ln -s /usr/bin/lbzip2 bzcat
-sudo ln -s /usr/bin/pigz gzip
+#  multi thread compress
+# cd /usr/local/bin
+# sudo ln -s /usr/bin/lbzip2 bzip2
+# sudo ln -s /usr/bin/lbzip2 bunzip2
+# sudo ln -s /usr/bin/lbzip2 bzcat
+# sudo ln -s /usr/bin/pigz gzip
 
 # disable speaker
 echo "blacklist pcspkr"  | sudo tee -a /etc/modprobe.d/nobeep.conf
@@ -130,10 +129,10 @@ yes | LC_ALL=en_US.UTF-8 sudo pacman -S --needed --noconfirm snap-pac grub-btrfs
 sudo sed -i -e 's/#GRUB_BTRFS_SUBMENUNAME="Arch Linux snapshots"/GRUB_BTRFS_SUBMENUNAME="Select snapshot"/g' /etc/default/grub-btrfs/config
 
 # disable core dump
-sudo mkdir -p /etc/systemd/coredump.conf.d
-sudo touch /etc/systemd/coredump.conf.d/custom.conf
-echo -e "[Coredump]\nStorage=none" | sudo tee /etc/systemd/coredump.conf.d/custom.conf
-sudo systemctl daemon-reload
+# sudo mkdir -p /etc/systemd/coredump.conf.d
+# sudo touch /etc/systemd/coredump.conf.d/custom.conf
+# echo -e "[Coredump]\nStorage=none" | sudo tee /etc/systemd/coredump.conf.d/custom.conf
+# sudo systemctl daemon-reload
 
 # run btrfs read-only check after login
 echo '[Desktop Entry]
